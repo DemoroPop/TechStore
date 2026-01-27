@@ -29,4 +29,24 @@ desktop application with database integration and user interface design.
 ---
 
 ## 📂 Project Structure
+DiplomaWPF/
+├── Images/
+├── MainWindow.xaml
+├── MainWindow.xaml.cs
+├── Db.cs
+├── Product.cs
+├── App.config
+
+---
+
+## ⚙️ Setup & Run
+
+1. Clone the repository
+2. Open the solution in **Visual Studio**
+3. Make sure MySQL server is running
+4. Update the connection string in `Db.cs`:
+
+```csharp
+Server=localhost;Port=3306;Database=wpf_shop;Uid=USER;Pwd=PASSWORD;
+
 
