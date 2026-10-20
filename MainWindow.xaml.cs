@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using DiplomaWPF.Models;
 
-namespace DiplomaWPF
+ namespace DiplomaWPF
 {
     public partial class MainWindow : Window
     {
-        private List<Product> cart = new List<Product>();
+        private List<CartItem> cart = new List<CartItem>();
 
         public MainWindow()
         {
             InitializeComponent();
 
-            Db db = new Db();
+            ProductRepository db = new ProductRepository();
             List<Product> products = db.GetProductList();
             ProductsList.ItemsSource = products;
 
@@ -27,18 +28,29 @@ namespace DiplomaWPF
 
             if (product == null)
                 return;
-
-            cart.Add(product);
+            CartItem existingItem = cart.Find(item => item.Product.Id == product.Id);
+            if (existingItem != null)
+            {
+                existingItem.Quantity += 1;
+            }
+            else
+            {
+                CartItem cartItem = new CartItem();
+                cartItem.Quantity = 1;
+                cartItem.Product = product;
+                cart.Add(cartItem);
+            }
             UpdateCartUI();
         }
+        
 
         private decimal GetCartTotal()
         {
             decimal total = 0;
 
-            foreach (Product p in cart)
+            foreach (CartItem c in cart)
             {
-                total += p.Price;
+                total += c.Product.Price * c.Quantity;
             }
 
             return total;

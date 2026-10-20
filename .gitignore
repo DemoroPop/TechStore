@@ -1,0 +1,6 @@
+.vs/
+bin/
+obj/
+Images.zip
+connectionStrings.config
+Images/connectionStrings.config

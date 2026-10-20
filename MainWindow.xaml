@@ -133,11 +133,11 @@
                                                 <ColumnDefinition Width="Auto" />
                                             </Grid.ColumnDefinitions>
 
-                                            <TextBlock Text="{Binding Name}"
+                                            <TextBlock Text="{Binding Product.Name}"
                                                        FontSize="13"/>
 
                                             <TextBlock Grid.Column="1"
-                                                       Text="{Binding Price}"
+                                                       Text="{Binding Product.Price}"
                                                        FontWeight="Bold"
                                                        Margin="10,0,0,0"/>
                                         </Grid>
