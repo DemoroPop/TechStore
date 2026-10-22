@@ -1,0 +1,4 @@
+<connectionStrings>
+	<add name="MySqlConnection"
+         connectionString="Server=ServerName;Port=0000;Database=DB_Name;Uid=YOUR_MYSQL_USERNAME;Pwd=YOUR_MYSQL_PASSWORD;" />
+</connectionStrings>
