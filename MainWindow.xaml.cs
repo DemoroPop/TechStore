@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using DiplomaWPF.Models;
+using System.Linq;
 
  namespace DiplomaWPF
 {
@@ -58,7 +59,7 @@ using DiplomaWPF.Models;
 
         private void UpdateCartUI()
         {
-            CartCountText.Text = $"Товарів: {cart.Count}";
+            CartCountText.Text = $"Товарів: {cart.Sum(item => item.Quantity)}";
             CartTotalText.Text = $"{GetCartTotal():N0} грн";
 
             CartItemsList.ItemsSource = null;

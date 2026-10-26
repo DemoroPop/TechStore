@@ -56,6 +56,7 @@
                                        Margin="0,4,0,8"
                                        TextAlignment="Center"/>
 
+
                             <Button Content="До кошика"
                                     Tag="{Binding}"
                                     Click="AddToCart_Click"
@@ -124,12 +125,14 @@
                         <StackPanel>
 
                             <ListBox x:Name="CartItemsList"
-                                     BorderThickness="0">
+                                     BorderThickness="0"
+                                     HorizontalContentAlignment="Stretch">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <Grid Margin="0,6">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
                                                 <ColumnDefinition Width="Auto" />
                                             </Grid.ColumnDefinitions>
 
@@ -138,6 +141,10 @@
 
                                             <TextBlock Grid.Column="1"
                                                        Text="{Binding Product.Price}"
+                                                       FontWeight="Bold"
+                                                       Margin="10,0,0,0"/>
+                                            <TextBlock Grid.Column="2"
+                                                       Text="{Binding Quantity}"
                                                        FontWeight="Bold"
                                                        Margin="10,0,0,0"/>
                                         </Grid>
