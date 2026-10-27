@@ -143,10 +143,11 @@
                                                        Text="{Binding Product.Price}"
                                                        FontWeight="Bold"
                                                        Margin="10,0,0,0"/>
-                                            <TextBlock Grid.Column="2"
-                                                       Text="{Binding Quantity}"
-                                                       FontWeight="Bold"
-                                                       Margin="10,0,0,0"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="2">
+                                                <Button Content="-" Click="DecreaseQuantity_Click"/>
+                                                <TextBlock Text="{Binding Quantity}"/>
+                                                <Button Content="+" Click="IncreaseQuantity_Click"/>
+                                            </StackPanel>
                                         </Grid>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>

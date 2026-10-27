@@ -5,7 +5,7 @@ using System.Windows.Controls;
 using DiplomaWPF.Models;
 using System.Linq;
 
- namespace DiplomaWPF
+namespace DiplomaWPF
 {
     public partial class MainWindow : Window
     {
@@ -43,7 +43,43 @@ using System.Linq;
             }
             UpdateCartUI();
         }
-        
+        private void IncreaseQuantity_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            if( button == null)
+            {
+                return;
+            }
+            CartItem cartItem = button.DataContext as CartItem;
+            if (cartItem != null)
+            {
+                cartItem.Quantity += 1;
+            }
+            UpdateCartUI();
+        }
+        private void DecreaseQuantity_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            if (button == null)
+            {
+                return;
+            }
+            CartItem cartItem = button.DataContext as CartItem;
+            if (cartItem == null)
+            {
+                return;
+            }
+            if (cartItem.Quantity > 1)
+            {
+                cartItem.Quantity -= 1;
+            }
+            else
+            {
+                cart.Remove(cartItem);
+            }
+            UpdateCartUI();
+        }
+
 
         private decimal GetCartTotal()
         {
