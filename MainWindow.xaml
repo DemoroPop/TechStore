@@ -15,15 +15,24 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="260" />
         </Grid.ColumnDefinitions>
-
-
-        <ListBox Grid.Column="0"
-                 x:Name="ProductsList"
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBox Grid.Row="0"
+                     x:Name="ProductSearchBox"
+                     Margin="10,4,10,4"
+                     VerticalContentAlignment="Center"
+                     TextChanged="ProductSearchBox_TextChanged"
+            />
+            <ListBox Grid.Row="1"
+                x:Name="ProductsList"
                  HorizontalContentAlignment="Stretch"
                  ScrollViewer.VerticalScrollBarVisibility="Auto"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 
-            <ListBox.ItemsPanel>
+                <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel />
                 </ItemsPanelTemplate>
@@ -70,7 +79,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-
+    </Grid>
 
         <Border Grid.Column="1"
                 Background="White"

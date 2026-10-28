@@ -10,13 +10,14 @@ namespace DiplomaWPF
     public partial class MainWindow : Window
     {
         private List<CartItem> cart = new List<CartItem>();
+        private List<Product> products = new List<Product>();
 
         public MainWindow()
         {
             InitializeComponent();
 
             ProductRepository db = new ProductRepository();
-            List<Product> products = db.GetProductList();
+            products = db.GetProductList();
             ProductsList.ItemsSource = products;
 
             UpdateCartUI();
@@ -78,6 +79,22 @@ namespace DiplomaWPF
                 cart.Remove(cartItem);
             }
             UpdateCartUI();
+        }
+        private void ProductSearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string searchText = ProductSearchBox.Text;
+
+            if (string.IsNullOrWhiteSpace(searchText))
+            {
+                ProductsList.ItemsSource = products;
+                return;
+            }
+
+            List<Product> filteredProducts = products
+                .Where(p => p.Name.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
+                .ToList();
+
+            ProductsList.ItemsSource = filteredProducts;
         }
 
 
