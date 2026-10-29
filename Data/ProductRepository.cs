@@ -20,7 +20,7 @@ namespace DiplomaWPF
                 connection.Open();
 
 
-                using (MySqlCommand mySqlCommand = new MySqlCommand("SELECT * FROM products", connection))
+                using (MySqlCommand mySqlCommand = new MySqlCommand("SELECT id, name, image, price FROM products", connection))
                 {
 
 
