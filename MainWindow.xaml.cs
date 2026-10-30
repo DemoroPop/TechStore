@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using DiplomaWPF.Models;
 using System.Linq;
+using Mysqlx.Crud;
 
 namespace DiplomaWPF
 {
@@ -19,6 +20,7 @@ namespace DiplomaWPF
             ProductRepository db = new ProductRepository();
             products = db.GetProductList();
             ProductsList.ItemsSource = products;
+            DropdownBox.SelectedIndex = 0;
 
             UpdateCartUI();
         }
@@ -82,18 +84,39 @@ namespace DiplomaWPF
         }
         private void ProductSearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            ApplyProductFilters();
+        }
+        private void DropdownBox_SelectionChanged(object sender, SelectionChangedEventArgs e) 
+        {
+            ApplyProductFilters();
+        }
+        private void ApplyProductFilters() 
+        {
             string searchText = ProductSearchBox.Text;
-
-            if (string.IsNullOrWhiteSpace(searchText))
-            {
-                ProductsList.ItemsSource = products;
-                return;
-            }
-
             List<Product> filteredProducts = products
                 .Where(p => p.Name.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
                 .ToList();
+            if (string.IsNullOrWhiteSpace(searchText))
+            {
+                filteredProducts = products;
+            }
+            switch(DropdownBox.SelectedIndex)
+            {
+                case 0:
+                    break;
 
+                case 1:
+                    filteredProducts = filteredProducts
+                        .OrderBy(p => p.Price)
+                        .ToList();
+                    break;
+
+                case 2:
+                    filteredProducts = filteredProducts
+                        .OrderByDescending(p => p.Price)
+                        .ToList();
+                    break;
+            }
             ProductsList.ItemsSource = filteredProducts;
         }
 

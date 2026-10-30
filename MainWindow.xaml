@@ -15,17 +15,32 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="260" />
         </Grid.ColumnDefinitions>
+        
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TextBox Grid.Row="0"
+            
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="150" />
+                </Grid.ColumnDefinitions>
+
+                <TextBox Grid.Column="0"
                      x:Name="ProductSearchBox"
-                     Margin="10,4,10,4"
+                     Margin="10,4,0,4"
                      VerticalContentAlignment="Center"
-                     TextChanged="ProductSearchBox_TextChanged"
-            />
+                     TextChanged="ProductSearchBox_TextChanged"/>
+
+                <ComboBox Grid.Column="1" Margin="0,4,10,4" x:Name="DropdownBox"  SelectionChanged="DropdownBox_SelectionChanged">
+                    <ComboBoxItem Content="By default"></ComboBoxItem>
+                    <ComboBoxItem Content="Price: from lowest to highest"></ComboBoxItem>
+                    <ComboBoxItem Content="Price: from highest to lowest"></ComboBoxItem>
+                </ComboBox>
+                     
+            </Grid>
             <ListBox Grid.Row="1"
                 x:Name="ProductsList"
                  HorizontalContentAlignment="Stretch"
