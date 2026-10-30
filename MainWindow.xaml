@@ -21,25 +21,40 @@
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            
+
             <Grid Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="150" />
-                </Grid.ColumnDefinitions>
+                <Border Grid.Row="0" 
+                        BorderBrush="Gray"
+                        BorderThickness="1"
+                        CornerRadius="6">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="1" />
+                            <ColumnDefinition Width="210" />
+                        </Grid.ColumnDefinitions>
+                   
+                    <TextBox Grid.Column="0"
+                         x:Name="ProductSearchBox"
+                         Margin="10,4,0,4"
+                         VerticalContentAlignment="Center"
+                         TextChanged="ProductSearchBox_TextChanged"
+                         BorderThickness="0"
+                         Background="Transparent"/>
+                        
+                        <Border Grid.Column="1"
+                                Background="Gray"
+                                Width="1"
+                                Margin="0,8"/>
 
-                <TextBox Grid.Column="0"
-                     x:Name="ProductSearchBox"
-                     Margin="10,4,0,4"
-                     VerticalContentAlignment="Center"
-                     TextChanged="ProductSearchBox_TextChanged"/>
-
-                <ComboBox Grid.Column="1" Margin="0,4,10,4" x:Name="DropdownBox"  SelectionChanged="DropdownBox_SelectionChanged">
-                    <ComboBoxItem Content="By default"></ComboBoxItem>
-                    <ComboBoxItem Content="Price: from lowest to highest"></ComboBoxItem>
-                    <ComboBoxItem Content="Price: from highest to lowest"></ComboBoxItem>
-                </ComboBox>
-                     
+                        <ComboBox Grid.Column="2" Margin="0,4,10,4" x:Name="DropdownBox"  SelectionChanged="DropdownBox_SelectionChanged" BorderThickness="0"
+                        Background="Transparent">
+                        <ComboBoxItem Content="By default"></ComboBoxItem>
+                        <ComboBoxItem Content="Price: from lowest to highest"></ComboBoxItem>
+                        <ComboBoxItem Content="Price: from highest to lowest"></ComboBoxItem>
+                    </ComboBox> 
+                   </Grid>
+                </Border>     
             </Grid>
             <ListBox Grid.Row="1"
                 x:Name="ProductsList"
