@@ -56,19 +56,20 @@
                    </Grid>
                 </Border>     
             </Grid>
+            
             <ListBox Grid.Row="1"
-                x:Name="ProductsList"
+                 x:Name="ProductsList"
                  HorizontalContentAlignment="Stretch"
                  ScrollViewer.VerticalScrollBarVisibility="Auto"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 
                 <ListBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel />
-                </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
 
-            <ListBox.ItemTemplate>
+                <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Border Width="180"
                             Margin="10"
@@ -109,7 +110,17 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-    </Grid>
+            <TextBlock Grid.Row="1"
+               x:Name="NoProductsText"
+               Text="No products found"
+               Visibility="Collapsed"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               FontSize="20"
+               Foreground="Gray"
+               IsHitTestVisible="False">
+            </TextBlock>
+        </Grid>
 
         <Border Grid.Column="1"
                 Background="White"

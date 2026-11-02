@@ -118,6 +118,14 @@ namespace DiplomaWPF
                     break;
             }
             ProductsList.ItemsSource = filteredProducts;
+            if (filteredProducts.Count == 0)
+            {
+                NoProductsText.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                NoProductsText.Visibility = Visibility.Collapsed;
+            }
         }
 
 
