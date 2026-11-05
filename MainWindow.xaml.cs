@@ -24,12 +24,8 @@ namespace DiplomaWPF
 
             UpdateCartUI();
         }
-
-        private void AddToCart_Click(object sender, RoutedEventArgs e)
+        private void AddProductToCart(Product product)
         {
-            Button button = sender as Button;
-            Product product = button.Tag as Product;
-
             if (product == null)
                 return;
             CartItem existingItem = cart.Find(item => item.Product.Id == product.Id);
@@ -45,6 +41,18 @@ namespace DiplomaWPF
                 cart.Add(cartItem);
             }
             UpdateCartUI();
+        }
+        private void AddToCart_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            if (button == null)
+            {
+                return;
+            }
+
+            Product product = button.Tag as Product;
+
+            AddProductToCart(product);
         }
         private void IncreaseQuantity_Click(object sender, RoutedEventArgs e)
         {
@@ -82,6 +90,17 @@ namespace DiplomaWPF
             }
             UpdateCartUI();
         }
+        private void ProductDetails_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            Product product = button.Tag as Product;
+
+            ProductDetailsWindow productDetailsWindow = new ProductDetailsWindow(product);
+            productDetailsWindow.AddToCartRequested += AddProductToCart;
+            productDetailsWindow.Owner = this;
+            productDetailsWindow.ShowDialog();
+        }
+
         private void ProductSearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             ApplyProductFilters();

@@ -95,9 +95,17 @@
                             <TextBlock Text="{Binding Price}"
                                        Margin="0,4,0,8"
                                        TextAlignment="Center"/>
+                                <Button Content="Деталі"
+                                        Tag="{Binding}"
+                                        Click="ProductDetails_Click"
+                                        Background="#EEEEEE"
+                                        Foreground="Black"
+                                        Padding="6"
+                                        Margin="0,0,0,6"
+                                        BorderThickness="0"
+                                        Cursor="Hand"/>
 
-
-                            <Button Content="До кошика"
+                                <Button Content="До кошика"
                                     Tag="{Binding}"
                                     Click="AddToCart_Click"
                                     Background="#4CAF50"
@@ -204,7 +212,7 @@
                             </ListBox>
 
                             <TextBlock x:Name="EmptyCartText"
-                                       Text="Кошик порожній&#x0a;Додайте товари зліва"
+                                       Text="Кошик порожній;Додайте товари зліва"
                                        Foreground="Gray"
                                        TextAlignment="Center"
                                        Margin="10"
