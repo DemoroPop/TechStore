@@ -4,13 +4,17 @@ TechStore is a desktop shop application built with **C#, WPF, and MySQL**. It de
 
 ## Features
 
-- Product listing loaded from a MySQL database
-- Product images stored locally in the project
-- Shopping cart with item quantity tracking
+- Product catalog loaded from a MySQL database
+- Product search by name
+- Product sorting by price
+- Detailed product view with images and descriptions
+- Shopping cart with item quantity management
+- Add products from the catalog and product details window
 - Automatic calculation of the cart total
 - Cart item counter
-- Redirect to a Fondy payment page (demo)
-- WPF user interface built with XAML
+- Local product image storage
+- Demo checkout with Fondy payment-page redirection
+- Event-driven communication between WPF windows
 
 ## Tech Stack
 
